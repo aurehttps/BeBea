@@ -1,0 +1,244 @@
+/* Styles spécifiques à la page Recherche */
+
+.search-content {
+    margin-left: 320px;
+    margin-right: 320px;
+    padding: 2rem;
+    padding-top: calc(80px + 2rem);
+    max-width: 1680px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Discovery Card */
+.discovery-card {
+    padding: 3rem 2rem;
+    min-height: 400px;
+}
+
+.discovery-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+}
+
+.discovery-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.discovery-title {
+    font-family: 'Brevia', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #fff;
+    margin: 0;
+}
+
+.discovery-steps {
+    font-family: 'Brevia', sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: #fff;
+    list-style: decimal;
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.discovery-steps li {
+    margin: 0;
+}
+
+.roll-btn {
+    background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%);
+    border: none;
+    border-radius: 90px;
+    padding: 1rem 3rem;
+    color: #fff;
+    font-family: 'URW Form', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.roll-btn:hover {
+    background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);
+    transform: translateY(-2px);
+}
+
+.discovery-graphic {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.discovery-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Categories Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.category-btn {
+    padding: 2rem;
+    border: none;
+    border-radius: 16px;
+    color: #fff;
+    font-family: 'URW Form', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Search Results Section */
+.search-results-content {
+    margin-left: 320px;
+    margin-right: 320px;
+    padding: 2rem;
+    padding-top: calc(80px + 2rem);
+    max-width: 1680px;
+}
+
+.search-results {
+    width: 100%;
+}
+
+.results-title {
+    font-family: 'Brevia', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.results-query {
+    font-family: 'Brevia', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+/* Responsive adjustments for search results - Tablet */
+@media (max-width: 768px) {
+    .search-results-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.5rem;
+        padding-top: calc(80px + 1.5rem);
+        padding-bottom: calc(80px + 1.5rem);
+        max-width: 100%;
+    }
+}
+
+/* Responsive adjustments - Mobile */
+@media (max-width: 480px) {
+    .search-results-content {
+        padding: 1rem;
+        padding-top: calc(80px + 1rem);
+        padding-bottom: calc(80px + 1rem);
+    }
+
+    .results-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Responsive adjustments - Tablet */
+@media (max-width: 768px) {
+    .search-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.5rem;
+        padding-top: calc(80px + 1.5rem);
+        padding-bottom: calc(80px + 1.5rem);
+        max-width: 100%;
+    }
+
+    .discovery-card {
+        padding: 2rem 1.5rem;
+        min-height: auto;
+    }
+
+    .discovery-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .discovery-title {
+        font-size: 2.5rem;
+    }
+
+    .discovery-steps {
+        font-size: 1.125rem;
+    }
+
+    .discovery-image {
+        max-width: 80%;
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive adjustments - Mobile */
+@media (max-width: 480px) {
+    .search-content {
+        padding: 1rem;
+        padding-top: calc(80px + 1rem);
+        padding-bottom: calc(80px + 1rem);
+    }
+
+    .discovery-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .discovery-title {
+        font-size: 2rem;
+    }
+
+    .discovery-steps {
+        font-size: 1rem;
+    }
+
+    .roll-btn {
+        padding: 0.875rem 2rem;
+        font-size: 1.125rem;
+    }
+
+    .discovery-image {
+        max-width: 70%;
+    }
+
+    .category-btn {
+        padding: 1.5rem;
+        font-size: 1.125rem;
+    }
+}

@@ -1,0 +1,82 @@
+<?php get_header(); ?>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-container glassmorphism">
+                <video src="<?php echo esc_url(get_template_directory_uri()); ?>/Images/BeBeats MD.mov" autoplay loop muted playsinline></video>
+            </div>
+        </section>
+
+        <!-- New Releases Section -->
+        <section class="content-section">
+            <h2 class="section-title">Les nouveautés</h2>
+            <p class="section-description">Sur BeBeats vous allez trouver le meilleur du son belge! Commencez par les nouveautés :</p>
+            <div class="content-container glassmorphism">
+                <div class="content-scroll">
+                    <!-- Album 1 -->
+                    <div class="content-item">
+                        <img src="" alt="Bloostone" class="content-image">
+                        <h3 class="content-title">Bloostone</h3>
+                        <p class="content-subtitle">Thomas Frank Hopper</p>
+                    </div>
+                    <!-- Album 2 -->
+                    <div class="content-item">
+                        <img src="" alt="RKTKN#1" class="content-image">
+                        <h3 class="content-title">RKTKN#1</h3>
+                        <p class="content-subtitle">Rakethanon</p>
+                    </div>
+                    <!-- Album 3 -->
+                    <div class="content-item">
+                        <img src="" alt="Crackhouse" class="content-image">
+                        <h3 class="content-title">Crackhouse</h3>
+                        <p class="content-subtitle">Highbloo</p>
+                    </div>
+                    <!-- Album 4 -->
+                    <div class="content-item">
+                        <img src="" alt="Forever" class="content-image">
+                        <h3 class="content-title">Forever</h3>
+                        <p class="content-subtitle">Sold Out</p>
+                    </div>
+                    <!-- Album 5 -->
+                    <div class="content-item">
+                        <img src="" alt="Well Hunger" class="content-image">
+                        <h3 class="content-title">Well Hunger</h3>
+                        <p class="content-subtitle">Kapitan Korsakov</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section class="content-section">
+            <h2 class="section-title">Nos articles</h2>
+            <p class="section-description">L'équipe BeBeats se démène pour vous proposer des articles intéressants sur l'actualité du monde de la musique belge.</p>
+            <div class="content-container glassmorphism">
+                <div class="content-scroll">
+                    <!-- Article 1 -->
+                    <div class="content-item">
+                        <img src="" alt="Les Nuits" class="content-image">
+                        <h3 class="content-title">Les Nuits</h3>
+                        <p class="content-subtitle">Botanique</p>
+                    </div>
+                    <!-- Article 2 -->
+                    <div class="content-item">
+                        <img src="" alt="Le Festival des Libertés" class="content-image">
+                        <h3 class="content-title">Le Festival des Libertés</h3>
+                        <p class="content-subtitle">Théâtre National</p>
+                    </div>
+                    <!-- Article 3 -->
+                    <div class="content-item">
+                        <img src="" alt="FKNYE" class="content-image">
+                        <h3 class="content-title">FKNYE</h3>
+                        <p class="content-subtitle">Théâtre National</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<?php get_footer(); ?>
+
