@@ -169,6 +169,48 @@ header * {
     stroke-width: 2;
 }
 
+/* Bouton profil dans le header */
+.profile-btn-header {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.profile-btn-header:hover {
+    background: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+}
+
+.profile-btn-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Navigation profil dans le menu latéral */
+.nav-icon-profile {
+    overflow: hidden;
+    padding: 0;
+}
+
+.nav-profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 /* Typography utilities for content */
 .text-bold {
     font-weight: 700;
@@ -294,8 +336,9 @@ header * {
         display: none;
     }
 
-    /* Afficher Connexion dans le menu principal sur tablette/mobile */
-    .nav-item-login {
+    /* Afficher Connexion ou Profil dans le menu principal sur tablette/mobile */
+    .nav-item-login,
+    .nav-item-profile {
         display: flex;
     }
 
@@ -321,10 +364,13 @@ header * {
         width: 100%;
     }
 
-    /* Masquer le bouton Connexion du header sur tablette/mobile */
+    /* Masquer le bouton Connexion et Profil du header sur tablette/mobile */
     .navbar .d-flex .login-btn,
     header .login-btn,
-    .login-btn {
+    .login-btn,
+    .navbar .d-flex .profile-btn-header,
+    header .profile-btn-header,
+    .profile-btn-header {
         display: none !important;
     }
 

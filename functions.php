@@ -52,6 +52,10 @@ function bebeats_enqueue_styles() {
     if (is_page('resultats') || is_search()) {
         wp_enqueue_style('bebeats-resultats-style', get_template_directory_uri() . '/css/pages/resultats.css', array('bebeats-style'), '1.0');
     }
+    
+    if (is_page('profil')) {
+        wp_enqueue_style('bebeats-profil-style', get_template_directory_uri() . '/css/pages/profil.css', array('bebeats-style'), '1.0');
+    }
 }
 
 function bebeats_enqueue_scripts() {
@@ -73,6 +77,11 @@ function bebeats_enqueue_scripts() {
     
     if (is_page('reglages')) {
         wp_enqueue_script('bebeats-toggles', get_template_directory_uri() . '/js/toggles.js', array('jquery'), '1.0', true);
+    }
+    
+    // Script pour l'aperçu des fichiers sur les pages d'inscription et réglages
+    if (is_page('inscription-fan-step3') || is_page('inscription-artiste-step3') || is_page('inscription-artiste-step4') || is_page('reglages')) {
+        wp_enqueue_script('bebeats-file-preview', get_template_directory_uri() . '/js/file-preview.js', array(), '1.0', true);
     }
 }
 
@@ -143,6 +152,9 @@ add_action('admin_post_nopriv_bebeats_login', 'bebeats_handle_login');
 function bebeats_create_registration_table() {
     global $wpdb;
     
+    // Inclure le fichier nécessaire pour dbDelta
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    
     $table_name = $wpdb->prefix . 'bebeats_registrations';
     $charset_collate = $wpdb->get_charset_collate();
     
@@ -178,9 +190,6 @@ function bebeats_create_registration_table() {
     if (empty($column_exists)) {
         $wpdb->query("ALTER TABLE $table_name ADD COLUMN sounds text AFTER description");
     }
-    
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
 }
 
 // Créer la table à l'activation du thème
@@ -837,6 +846,84 @@ function bebeats_handle_register_artiste_step4() {
 }
 add_action('admin_post_bebeats_register_artiste_step4', 'bebeats_handle_register_artiste_step4');
 add_action('admin_post_nopriv_bebeats_register_artiste_step4', 'bebeats_handle_register_artiste_step4');
+
+/**
+ * Traitement de la mise à jour du profil
+ */
+function bebeats_handle_update_profile() {
+    // Vérifier que l'utilisateur est connecté
+    if (!is_user_logged_in()) {
+        wp_redirect(home_url('/auth-start'));
+        exit;
+    }
+    
+    // Vérifier le nonce
+    if (!isset($_POST['bebeats_update_profile_nonce']) || !wp_verify_nonce($_POST['bebeats_update_profile_nonce'], 'bebeats_update_profile_action')) {
+        wp_redirect(home_url('/reglages?error=1'));
+        exit;
+    }
+    
+    $current_user = wp_get_current_user();
+    $user_id = $current_user->ID;
+    
+    // Récupérer la description
+    $description = isset($_POST['description']) ? sanitize_textarea_field($_POST['description']) : '';
+    
+    // Mettre à jour la description
+    if (!empty($description)) {
+        update_user_meta($user_id, 'description', $description);
+    } else {
+        delete_user_meta($user_id, 'description');
+    }
+    
+    // Gérer l'upload de la photo de profil
+    if (!empty($_FILES['profile_photo']['name'])) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        
+        $upload = wp_handle_upload($_FILES['profile_photo'], array('test_form' => false));
+        if (!isset($upload['error'])) {
+            update_user_meta($user_id, 'bebeats_profile_photo', $upload['url']);
+        }
+    }
+    
+    // Gérer l'upload de la bannière
+    if (!empty($_FILES['banner']['name'])) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        
+        $upload = wp_handle_upload($_FILES['banner'], array('test_form' => false));
+        if (!isset($upload['error'])) {
+            update_user_meta($user_id, 'bebeats_banner', $upload['url']);
+        }
+    }
+    
+    // Rediriger vers la page de réglages avec un message de succès
+    wp_redirect(home_url('/reglages?updated=1'));
+    exit;
+}
+add_action('admin_post_bebeats_update_profile', 'bebeats_handle_update_profile');
+
+/**
+ * Traitement de la déconnexion
+ */
+function bebeats_handle_logout() {
+    // Vérifier le nonce
+    if (!isset($_POST['bebeats_logout_nonce']) || !wp_verify_nonce($_POST['bebeats_logout_nonce'], 'bebeats_logout_action')) {
+        wp_redirect(home_url('/reglages?error=1'));
+        exit;
+    }
+    
+    // Déconnecter l'utilisateur
+    wp_logout();
+    
+    // Rediriger vers la page d'accueil
+    wp_redirect(home_url('/'));
+    exit;
+}
+add_action('admin_post_bebeats_logout', 'bebeats_handle_logout');
 
 ?>
 
