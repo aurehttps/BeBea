@@ -549,13 +549,10 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: visible;
 }
 
 .profile-action-btn:hover {
@@ -577,73 +574,6 @@
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.9);
     flex: 1;
-}
-
-/* Aperçu des fichiers */
-.file-preview {
-    width: 100%;
-    margin-top: 0.5rem;
-    padding: 1rem;
-    background: rgba(60, 60, 60, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    display: block;
-    position: relative;
-    z-index: 1;
-}
-
-.file-preview img {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.file-name {
-    display: block;
-    font-family: 'URW Form', sans-serif;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 0.5rem;
-    word-break: break-word;
-}
-
-.file-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.file-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-}
-
-.file-icon {
-    font-size: 1.25rem;
-    line-height: 1;
-}
-
-.file-item .file-name {
-    margin: 0;
-    flex: 1;
-}
-
-.profile-action-btn.file-selected {
-    border-color: rgba(139, 92, 246, 0.5);
-    background: rgba(139, 92, 246, 0.1);
-}
-
-.profile-action-btn.file-selected .profile-action-text::after {
-    content: ' ✓';
-    color: #8B5CF6;
-    font-weight: 600;
 }
 
 .auth-textarea {
